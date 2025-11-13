@@ -27,6 +27,26 @@ class MyApp extends StatelessWidget {
     '+'
   ];
 
+  void Addnumber(numb) {
+    String aint = '';
+    String bfloat = '';
+    String oper = '';
+    String total = '';
+    if (numb! - '=') {
+      if (numb != '+' && numb != '-' && numb != '/' && numb != '*') {
+        if (numb != '.') {
+          aint += numb;
+        } else {
+          bfloat += numb;
+        }
+      } else {
+        oper = numb;
+      }
+    } else {
+      print("$aint $oper ${bfloat}");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
@@ -46,7 +66,7 @@ class MyApp extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      "Gen'Z Simple ",
+                      "Begginer",
                       style: TextStyle(fontSize: 30),
                     ),
                     Text(
@@ -57,7 +77,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 80,
+                height: 40,
               ),
               Container(
                 width: width * 0.9,
@@ -67,36 +87,34 @@ class MyApp extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: 30,
               ),
-              Container(
-                width: width * 0.9,
-                height: height * 0.09,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: const Color.fromARGB(255, 129, 129, 129),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: GridView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                      crossAxisSpacing: 8,
+                      mainAxisSpacing: 8),
+                  itemCount: number.length,
+                  itemBuilder: (context, index) {
+                    final label = number[index];
+                    return ElevatedButton(
+                        onPressed: () => Addnumber(label),
+                        style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.all(20),
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadiusGeometry.circular(8))),
+                        child: Text(
+                          label,
+                          style: const TextStyle(fontSize: 24),
+                        ));
+                  },
                 ),
-              ),
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4, crossAxisSpacing: 8, mainAxisSpacing: 8),
-                itemCount: number.length,
-                itemBuilder: (context, index) {
-                  final label = number[index];
-                  return ElevatedButton(
-                      onPressed: () => print(label),
-                      style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.all(20),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadiusGeometry.circular(8))),
-                      child: Text(
-                        label,
-                        style: const TextStyle(fontSize: 24),
-                      ));
-                },
               )
             ],
           ),
