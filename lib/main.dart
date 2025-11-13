@@ -1,18 +1,31 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(MyApp());
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class MyApp extends StatelessWidget {
+  MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   final Color bg = const Color.fromARGB(255, 221, 221, 221);
   double width = 0;
   double height = 0;
+  final List number = [
+    '7',
+    '8',
+    '9',
+    '/',
+    '4',
+    '5',
+    '6',
+    '*',
+    '1',
+    '2',
+    '3',
+    '-',
+    '0',
+    '.',
+    '=',
+    '+'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -65,8 +78,25 @@ class _MyAppState extends State<MyApp> {
                   color: const Color.fromARGB(255, 129, 129, 129),
                 ),
               ),
-              const Row(
-                children: [],
+              GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4, crossAxisSpacing: 8, mainAxisSpacing: 8),
+                itemCount: number.length,
+                itemBuilder: (context, index) {
+                  final label = number[index];
+                  return ElevatedButton(
+                      onPressed: () => print(label),
+                      style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.all(20),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadiusGeometry.circular(8))),
+                      child: Text(
+                        label,
+                        style: const TextStyle(fontSize: 24),
+                      ));
+                },
               )
             ],
           ),
