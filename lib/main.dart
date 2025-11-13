@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -26,16 +26,26 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: Column(
             children: [
-              SizedBox(height: 25,),
-              Center(
+              const SizedBox(
+                height: 25,
+              ),
+              const Center(
                 child: Column(
                   children: [
-                    Text("Gen'Z Simple ", style: TextStyle(fontSize: 30),),
-                    Text("Calculator", style: TextStyle(fontSize: 30),)
+                    Text(
+                      "Gen'Z Simple ",
+                      style: TextStyle(fontSize: 30),
+                    ),
+                    Text(
+                      "Calculator",
+                      style: TextStyle(fontSize: 30),
+                    )
                   ],
                 ),
               ),
-              SizedBox(height: 80,),
+              const SizedBox(
+                height: 80,
+              ),
               Container(
                 width: width * 0.9,
                 height: height * 0.09,
@@ -44,7 +54,9 @@ class _MyAppState extends State<MyApp> {
                   color: Colors.white,
                 ),
               ),
-              SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               Container(
                 width: width * 0.9,
                 height: height * 0.09,
@@ -53,12 +65,8 @@ class _MyAppState extends State<MyApp> {
                   color: const Color.fromARGB(255, 129, 129, 129),
                 ),
               ),
-              Row(
-                children: [
-                  Text("No"),
-                  Text("No"),
-                  Text("No"),
-                ],
+              const Row(
+                children: [],
               )
             ],
           ),
